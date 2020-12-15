@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laoliuprojectnew.demo.dao.CustomerDao">
+    <select id="getAllEmployee" resultType="com.laoliuprojectnew.demo.bean.Employee">
+        SELECT * FROM `customer` 
+        <if test="name!=null">
+            WHERE name like #{name}
+        </if>
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getEmployeeCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM `customer`
+        <if test="name!=null">
+            WHERE name like #{name}
+        </if>
+    </select>
+    
+    <update id="updateState">
+        UPDATE employee SET state=1,time=NOW() WHERE id = {#id}
+    </update>
+    <insert id="addEmployee">
+        INSERT  INTO user
+        (name,age,sex,phonenumber,address)
+        VALUE
+        (#{name},#{age},#{sex},#{phonenumber},#{address)}
+    </insert>
+    <delete id="deleteEmployee">
+        DELETE FROM user WHERE id id=#{id}
+    </delete>
+
+    <select id="getUpdateEmployee" resultType="com.laoliuprojectnew.demo.bean.Employee">
+        SELETE * FROM user WHERE id =#{id}
+    </select>
+
+    <update id="editEmployee">
+        UPDATE  user SET name={#name},age={#age},
+        phonenumber=#{phonenumber},address=#{address)
+        WHERE id = #{id}
+    </update>
+</mapper>
