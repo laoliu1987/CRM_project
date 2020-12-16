@@ -10,6 +10,7 @@
 
     <select id="getDakaCounts" resultType="java.lang.Integer">
         SELECT count(*) FROM `daka`
+        LIMIT #{pageStart},#{pageSize}
     </select>
     <insert id="addDaka">
         INSERT  INTO daka

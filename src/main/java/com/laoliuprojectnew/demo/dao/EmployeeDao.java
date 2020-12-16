@@ -8,10 +8,10 @@ import java.util.List;
 
 @Repository
 public interface EmployeeDao {
-    public List<Employee> getAllEmployee(@Param("name") String name,
+    public List<Employee> getAllEmployeeWithName(@Param("name") String name,
                                          @Param("pageStart") int PageStart,
                                          @Param("pageSize") int pageSize);
-    public int getEmployeeCounts(@Param("name") String name);
+    public int getEmployeeCountsWithName(@Param("name") String name);
     public int updateState(Integer id);
     public int addEmployee(Employee employee);
     public int deleteEmployee(Integer id);

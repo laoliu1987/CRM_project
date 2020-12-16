@@ -17,11 +17,11 @@ public class CustomerController {
     @Autowired
     private CustomerDao cDao;
 
-    @RequestMapping("/allCustomer")
-    public String getCustomerList(QueryInfo queryInfo) {
-        int numbers = cDao.getCustomerCounts("%" + queryInfo.getQuery() + "%");
+    @RequestMapping("/allCustomerWithName")
+    public String getCustomerListWithName(QueryInfo queryInfo) {
+        int numbers = cDao.getCustomerCountsWithName(queryInfo.getQuery());
         int pageStart = (queryInfo.getPageNum() - 1) * queryInfo.getPageSize();
-        List<Customer> customer = cDao.getAllCustomer("%" + queryInfo.getQuery() + "%", pageStart, queryInfo.getPageSize());
+        List<Customer> customer = cDao.getAllCustomerWithName("%"+queryInfo.getQuery()+"%",pageStart, queryInfo.getPageSize());
         HashMap<String, Object> res = new HashMap<>();
         res.put("number", numbers);
         res.put("data", customer);

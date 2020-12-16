@@ -2,22 +2,22 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.laoliuprojectnew.demo.dao.CustomerDao">
-    <select id="getAllEmployee" resultType="com.laoliuprojectnew.demo.bean.Employee">
-        SELECT * FROM `customer` 
+<mapper namespace="com.laoliuprojectnew.demo.dao.EmployeeDao">
+    <select id="getAllEmployeeWithName" resultType="com.laoliuprojectnew.demo.bean.Employee">
+        SELECT * FROM `user`
         <if test="name!=null">
             WHERE name like #{name}
         </if>
         LIMIT #{pageStart},#{pageSize}
     </select>
 
-    <select id="getEmployeeCounts" resultType="java.lang.Integer">
-        SELECT count(*) FROM `customer`
+    <select id="getEmployeeCountsWithName" resultType="java.lang.Integer">
+        SELECT count(*) FROM `user`
         <if test="name!=null">
             WHERE name like #{name}
         </if>
     </select>
-    
+
     <update id="updateState">
         UPDATE employee SET state=1,time=NOW() WHERE id = {#id}
     </update>

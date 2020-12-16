@@ -1,7 +1,6 @@
 package com.laoliuprojectnew.demo.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.laoliuprojectnew.demo.bean.Customer;
 import com.laoliuprojectnew.demo.bean.Employee;
 import com.laoliuprojectnew.demo.bean.QueryInfo;
 import com.laoliuprojectnew.demo.dao.EmployeeDao;
@@ -19,11 +18,11 @@ public class EmployeeController {
     @Autowired
     private EmployeeDao eDao;
 
-    @RequestMapping("/allEmployee") //列出所有员工
-    public String getEmployeeList(QueryInfo queryInfo){
-        int numbers = eDao.getEmployeeCounts("%" + queryInfo.getQuery() + "%");
+    @RequestMapping("/allEmployeeWithName") //列出所有员工
+    public String getEmployeeListWithName(QueryInfo queryInfo){
+        int numbers = eDao.getEmployeeCountsWithName("%" + queryInfo.getQuery() + "%");
         int pageStart = (queryInfo.getPageNum() - 1) * queryInfo.getPageSize();
-        List<Employee> employee = eDao.getAllEmployee("%" + queryInfo.getQuery() + "%", pageStart, queryInfo.getPageSize());
+        List<Employee> employee = eDao.getAllEmployeeWithName("%" + queryInfo.getQuery() + "%", pageStart, queryInfo.getPageSize());
         HashMap<String, Object> res = new HashMap<>();
         res.put("number", numbers);
         res.put("data", employee);
