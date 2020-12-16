@@ -17,7 +17,7 @@ public class CustomerController {
     @Autowired
     private CustomerDao cDao;
 
-    @RequestMapping("/allcustomer")
+    @RequestMapping("/allCustomer")
     public String getCustomerList(QueryInfo queryInfo) {
         int numbers = cDao.getCustomerCounts("%" + queryInfo.getQuery() + "%");
         int pageStart = (queryInfo.getPageNum() - 1) * queryInfo.getPageSize();
@@ -28,23 +28,23 @@ public class CustomerController {
         String res_string = JSON.toJSONString(res);
         return res_string;
     }
-    @RequestMapping("/addcustomer") // 添加员工
+    @RequestMapping("/addCustomer") // 添加员工
     public String addCustomer(@RequestBody Customer customer){
         int i = cDao.addCustomer(customer);
         return i>0?"success":"error";
     }
-    @RequestMapping("/deletecustomer")//根据主键删除信息 只需提供id
+    @RequestMapping("/deleteCustomer")//根据主键删除信息 只需提供id
     public String deleteCustomer(int id){
         int i = cDao.deleteCustomer(id);
         return i>0?"success":"error";
     }
-    @RequestMapping("/getupdate")// 或许需要修改信息的员工信息
+    @RequestMapping("/getCustomerUpdate")// 或许需要修改信息的员工信息
     public String getUpdateCustomer(int id){
         Customer customer = cDao.getUpdateCustomer(id);
         String string = JSON.toJSONString(customer);
         return string;
     }
-    @RequestMapping("/editcustomer") //修改员工信息
+    @RequestMapping("/editCustomer") //修改员工信息
     public String editCustomer(@RequestBody Customer customer){
         int i = cDao.editCustomer(customer);
         return i>0?"success":"error";

@@ -13,7 +13,6 @@ public interface CustomerDao {
                                          @Param("pageStart") int PageStart,
                                          @Param("pageSize") int pageSize);
     public int getCustomerCounts(@Param("name") String name);
-    public int updateState(Integer id);
     public int addCustomer(Customer customer);
     public int deleteCustomer(Integer id);
     public Customer getUpdateCustomer(Integer id);

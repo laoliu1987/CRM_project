@@ -1,6 +1,5 @@
 package com.laoliuprojectnew.demo.dao;
 
-import com.laoliuprojectnew.demo.bean.Customer;
 import com.laoliuprojectnew.demo.bean.Employee;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

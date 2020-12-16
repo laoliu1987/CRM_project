@@ -19,7 +19,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeDao eDao;
 
-    @RequestMapping("/allemployee") //列出所有员工
+    @RequestMapping("/allEmployee") //列出所有员工
     public String getEmployeeList(QueryInfo queryInfo){
         int numbers = eDao.getEmployeeCounts("%" + queryInfo.getQuery() + "%");
         int pageStart = (queryInfo.getPageNum() - 1) * queryInfo.getPageSize();
@@ -30,7 +30,7 @@ public class EmployeeController {
         String res_string = JSON.toJSONString(res);
         return res_string;
     }
-    @RequestMapping("/Employeestate") //修改员工状态（打卡）
+    @RequestMapping("/EmployeeState") //修改员工状态（打卡）
     public String updateEmployeeState(@RequestParam("id")Integer id){
         int i = eDao.updateState(id);
         return i > 0 ? "success":"error";
@@ -45,13 +45,13 @@ public class EmployeeController {
         int i = eDao.deleteEmployee(id);
         return i>0?"success":"error";
     }
-    @RequestMapping("/getupdate")// 或许需要修改信息的员工信息
+    @RequestMapping("/getUpdate")// 或许需要修改信息的员工信息
     public String getUpdateEmployee(int id){
         Employee employee = eDao.getUpdateEmployee(id);
         String string = JSON.toJSONString(employee);
         return string;
     }
-    @RequestMapping("/editemployee") //修改员工信息
+    @RequestMapping("/editEmployee") //修改员工信息
     public String editEmployee(@RequestBody Employee employee){
         int i = eDao.editEmployee(employee);
         return i>0?"success":"error";

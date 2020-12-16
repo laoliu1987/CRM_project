@@ -22,21 +22,21 @@
         UPDATE employee SET state=1,time=NOW() WHERE id = {#id}
     </update>
     <insert id="addCustomer">
-        INSERT  INTO user
+        INSERT  INTO customer
         (name,age,sex,phonenumber,address)
         VALUE
         (#{name},#{age},#{sex},#{phonenumber},#{address)}
     </insert>
     <delete id="deleteCustomer">
-        DELETE FROM user WHERE id id=#{id}
+        DELETE FROM customer WHERE id id=#{id}
     </delete>
 
     <select id="getUpdateCustomer" resultType="com.laoliuprojectnew.demo.bean.Customer">
-        SELETE * FROM user WHERE id =#{id}
+        SELETE * FROM customer WHERE id =#{id}
     </select>
 
     <update id="editCustomer">
-        UPDATE  user SET name={#name},age={#age},
+        UPDATE  customer SET name={#name},age={#age},
         phonenumber=#{phonenumber},address=#{address)
         WHERE id = #{id}
     </update>

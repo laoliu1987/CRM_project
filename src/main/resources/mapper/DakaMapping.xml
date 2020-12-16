@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laoliuprojectnew.demo.dao.DakaDao">
+    <select id="getAllDaka" resultType="com.laoliuprojectnew.demo.bean.Daka">
+        SELECT * FROM `daka`
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getDakaCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM `daka`
+    </select>
+    <insert id="addDaka">
+        INSERT  INTO daka
+        (name,age,sex,phonenumber,address)
+        VALUE
+        (#{name},#{age},#{sex},#{phonenumber},#{address)}
+    </insert>
+    <delete id="deleteDaka">
+        DELETE FROM daka WHERE id id=#{id}
+    </delete>
+
+    <select id="getUpdateDaka" resultType="com.laoliuprojectnew.demo.bean.Daka">
+        SELETE * FROM daka WHERE id =#{id}
+    </select>
+
+    <update id="editDaka">
+        UPDATE  daka SET name={#name},age={#age},
+        phonenumber=#{phonenumber},address=#{address)
+        WHERE id = #{id}
+    </update>
+</mapper>
