@@ -17,7 +17,7 @@ import java.util.List;
 public class DakaController {
     @Autowired
     private DakaDao dDao;
-    @RequestMapping("/allDaka")
+    @RequestMapping("/allDaka")//获取所有打卡记录
     public String getDakaList(QueryInfo queryInfo) {
         int numbers = dDao.getDakaCounts();
         int pageStart = (queryInfo.getPageNum() - 1) * queryInfo.getPageSize();

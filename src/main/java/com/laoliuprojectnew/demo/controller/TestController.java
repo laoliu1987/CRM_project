@@ -15,7 +15,7 @@ import java.util.List;
 public class TestController {
     @Autowired
     private DakaDao dDao;
-    @RequestMapping("/allDakaA")
+    @RequestMapping("/test")
     public String getDakaList(QueryInfo queryInfo) {
         int numbers = dDao.getDakaCounts();
         int pageStart = (queryInfo.getPageNum() - 1) * queryInfo.getPageSize();

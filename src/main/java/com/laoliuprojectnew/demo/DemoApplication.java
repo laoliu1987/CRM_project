@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @MapperScan("com.laoliuprojectnew.demo.dao")
+@MapperScan("com.laoliuprojectnew.demo.model")
 @SpringBootApplication
 public class DemoApplication {
 

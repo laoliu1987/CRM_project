@@ -2,8 +2,8 @@ package com.laoliuprojectnew.demo.bean;
 
 public class QueryInfo {
     private String query;//查询信息 name
-    private int pageNum = 1; //当前页
-    private int pageSize = 1; //每页最大数
+    private int pageNum =1; //当前页
+    private int pageSize=1; //每页最大数
 
     public QueryInfo() {
     }
