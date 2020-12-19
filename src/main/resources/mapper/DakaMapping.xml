@@ -16,19 +16,19 @@
         INSERT  INTO daka
         (name,age,sex,phonenumber,address)
         VALUE
-        (#{name},#{age},#{sex},#{phonenumber},#{address)}
+        (#{name},#{age},#{sex},#{phonenumber},#{address})
     </insert>
     <delete id="deleteDaka">
-        DELETE FROM daka WHERE id id=#{id}
+        DELETE FROM daka WHERE id=#{id}
     </delete>
 
     <select id="getUpdateDaka" resultType="com.laoliuprojectnew.demo.bean.Daka">
-        SELETE * FROM daka WHERE id =#{id}
+        SELECT * FROM daka WHERE id =#{id}
     </select>
 
     <update id="editDaka">
         UPDATE  daka SET name={#name},age={#age},
-        phonenumber=#{phonenumber},address=#{address)
+        phonenumber=#{phonenumber},address=#{address}
         WHERE id = #{id}
     </update>
 </mapper>

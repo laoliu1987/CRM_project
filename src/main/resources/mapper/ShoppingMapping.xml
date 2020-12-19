@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laoliuprojectnew.demo.dao.ShoppingDao">
+    <select id="getAllShoppingWithName" resultType="com.laoliuprojectnew.demo.bean.Shopping">
+        SELECT * FROM `shopping`
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getShoppingCountsWithName" resultType="java.lang.Integer">
+        SELECT count(*) FROM `shopping`
+    </select>
+    <insert id="addShopping">
+        INSERT  INTO shopping
+        (name,cname,gname,time)
+        VALUE
+        (#{name},#{cname},#{gname},now())
+    </insert>
+    <delete id="deleteShopping">
+        DELETE FROM shopping WHERE id=#{id}
+    </delete>
+
+    <select id="getUpdateShopping" resultType="com.laoliuprojectnew.demo.bean.Shopping">
+        SELECT * FROM shopping WHERE id =#{id}
+    </select>
+
+    <update id="editShopping">
+        UPDATE  shopping SET name=#{name},cname=#{cname},
+        cname=#{gname},time=#{time}
+        WHERE id = #{id}
+    </update>
+</mapper>

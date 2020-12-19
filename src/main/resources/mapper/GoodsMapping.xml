@@ -3,5 +3,31 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.laoliuprojectnew.demo.dao.GoodsDao">
+    <select id="getAllGoodsWithName" resultType="com.laoliuprojectnew.demo.bean.Goods">
+        SELECT * FROM `goods`
+        LIMIT #{pageStart},#{pageSize}
+    </select>
 
+    <select id="getGoodsCountsWithName" resultType="java.lang.Integer">
+        SELECT count(*) FROM `goods`
+    </select>
+    <insert id="addGoods">
+        INSERT  INTO goods
+        (name,price,score,`left`,beizhu)
+        VALUE
+        (#{name},#{price},#{score},#{left},#{beizhu})
+    </insert>
+    <delete id="deleteGoods">
+        DELETE FROM goods WHERE id=#{id}
+    </delete>
+
+    <select id="getUpdateGoods" resultType="com.laoliuprojectnew.demo.bean.Goods">
+        SELECT * FROM goods WHERE id =#{id}
+    </select>
+
+    <update id="editGoods">
+        UPDATE  goods SET name=#{name},price=#{price},
+        score=#{score},`left`=#{left},beizhu=#{beizhu}
+        WHERE id = #{id}
+    </update>
 </mapper>

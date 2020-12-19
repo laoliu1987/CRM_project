@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laoliuprojectnew.demo.dao.OperationDao">
+    <select id="getAllOperationWithName" resultType="com.laoliuprojectnew.demo.bean.Operation">
+        SELECT * FROM `operation`
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getOperationCountsWithName" resultType="java.lang.Integer">
+        SELECT count(*) FROM `operation`
+    </select>
+    <insert id="addOperation">
+        INSERT  INTO operation
+        (name,price,score,beizhu)
+        VALUE
+        (#{name},#{price},#{score},#{beizhu})
+    </insert>
+    <delete id="deleteOperation">
+        DELETE FROM operation WHERE id=#{id}
+    </delete>
+
+    <select id="getUpdateOperation" resultType="com.laoliuprojectnew.demo.bean.Operation">
+        SELECT * FROM operation WHERE id =#{id}
+    </select>
+
+    <update id="editOperation">
+        UPDATE  operation SET name=#{name},price=#{price},
+        score=#{score},beizhu=#{beizhu}
+        WHERE id = #{id}
+    </update>
+</mapper>

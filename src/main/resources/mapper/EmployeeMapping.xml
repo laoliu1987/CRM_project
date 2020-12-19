@@ -19,25 +19,33 @@
     </select>
 
     <update id="updateState">
-        UPDATE employee SET state=1,time=NOW() WHERE id = {#id}
+        UPDATE `employee` SET state=1,time=NOW() WHERE id=#{id}
     </update>
+
+    <insert id="addDakaWithNameAndId">
+        INSERT  INTO daka
+                (eid,name,time)
+                 VALUE
+                (#{id},#{name},NOW())
+    </insert>
+
     <insert id="addEmployee">
         INSERT  INTO employee
-        (name,age,sex,phonenumber,address)
+        (name,age,sex,phonenumber,address,position)
         VALUE
-        (#{name},#{age},#{sex},#{phonenumber},#{address)}
+        (#{name},#{age},#{sex},#{phonenumber},#{address},#{position})
     </insert>
-    <delete id="deleteEmployee">
-        DELETE FROM employee WHERE id id=#{id}
-    </delete>
 
+    <delete id="deleteEmployee">
+        DELETE FROM employee WHERE id=#{id}
+    </delete>
     <select id="getUpdateEmployee" resultType="com.laoliuprojectnew.demo.bean.Employee">
-        SELETE * FROM employee WHERE id =#{id}
+        SELECT * FROM employee WHERE id=#{id}
     </select>
 
     <update id="editEmployee">
-        UPDATE  employee SET name={#name},age={#age},
-        phonenumber=#{phonenumber},address=#{address)
+        UPDATE  employee SET name=#{name},age=#{age},
+        phonenumber=#{phonenumber},address=#{address},position=#{position}
         WHERE id = #{id}
     </update>
 </mapper>

@@ -7,8 +7,26 @@ public class Customer {
     private String sex;
     private String phonenumber;
     private String address;
+    private String beizhu;
+    private int score;
 
     public Customer() {
+    }
+
+    public String getBeizhu() {
+        return beizhu;
+    }
+
+    public void setBeizhu(String beizhu) {
+        this.beizhu = beizhu;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public int getId() {

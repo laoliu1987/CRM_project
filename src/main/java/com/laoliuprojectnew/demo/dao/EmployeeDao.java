@@ -13,6 +13,7 @@ public interface EmployeeDao {
                                          @Param("pageSize") int pageSize);
     public int getEmployeeCountsWithName(@Param("name") String name);
     public int updateState(Integer id);
+    public int addDakaWithNameAndId(Integer id,String name);
     public int addEmployee(Employee employee);
     public int deleteEmployee(Integer id);
     public Employee getUpdateEmployee(Integer id);

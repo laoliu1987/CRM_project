@@ -5,36 +5,35 @@
 <mapper namespace="com.laoliuprojectnew.demo.dao.CustomerDao">
     <select id="getAllCustomerWithName" resultType="com.laoliuprojectnew.demo.bean.Customer">
         SELECT * FROM `customer` 
-        <if test="name!=null">
-            WHERE name like #{name}
+        <if test="phonenumber!=null">
+            WHERE phonenumber like #{phonenumber}
         </if>
         LIMIT #{pageStart},#{pageSize}
     </select>
     <select id="getCustomerCountsWithName" resultType="java.lang.Integer">
         SELECT count(*) FROM `customer`
-        <if test="name!=null">
-            WHERE name like #{name}
+        <if test="phonenumber!=null">
+            WHERE phonenumber like #{phonenumber}
         </if>
-        LIMIT #{pageStart},#{pageSize}
     </select>
 
     <insert id="addCustomer">
         INSERT  INTO customer
         (name,age,sex,phonenumber,address)
         VALUE
-        (#{name},#{age},#{sex},#{phonenumber},#{address)}
+        (#{name},#{age},#{sex},#{phonenumber},#{address})
     </insert>
     <delete id="deleteCustomer">
-        DELETE FROM customer WHERE id id=#{id}
+        DELETE FROM customer WHERE id=#{id}
     </delete>
 
     <select id="getUpdateCustomer" resultType="com.laoliuprojectnew.demo.bean.Customer">
-        SELETE * FROM customer WHERE id =#{id}
+        SELECT * FROM customer WHERE id =#{id}
     </select>
 
     <update id="editCustomer">
-        UPDATE  customer SET name={#name},age={#age},
-        phonenumber=#{phonenumber},address=#{address)
+        UPDATE  customer SET name=#{name},age=#{age},
+        phonenumber=#{phonenumber},address=#{address},score=#{score},beizhu=#{beizhu}
         WHERE id = #{id}
     </update>
 </mapper>

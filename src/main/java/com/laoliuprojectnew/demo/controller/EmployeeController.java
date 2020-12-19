@@ -3,6 +3,7 @@ package com.laoliuprojectnew.demo.controller;
 import com.alibaba.fastjson.JSON;
 import com.laoliuprojectnew.demo.bean.Employee;
 import com.laoliuprojectnew.demo.bean.QueryInfo;
+import com.laoliuprojectnew.demo.dao.DakaDao;
 import com.laoliuprojectnew.demo.dao.EmployeeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,8 @@ import java.util.List;
 public class EmployeeController {
     @Autowired
     private EmployeeDao eDao;
+    @Autowired
+    private DakaDao dDao;
 
     @RequestMapping("/allEmployeeWithName") //列出所有员工
     public String getEmployeeListWithName(QueryInfo queryInfo){
@@ -30,9 +33,12 @@ public class EmployeeController {
         return res_string;
     }
     @RequestMapping("/EmployeeState") //修改员工状态（打卡）
-    public String updateEmployeeState(@RequestParam("id")Integer id){
-        int i = eDao.updateState(id);
-        return i > 0 ? "success":"error";
+    public String updateEmployeeState(@RequestParam("id")Integer id,@RequestParam("name")String name){
+       synchronized (EmployeeController.class) {
+           int i = eDao.updateState(id);
+           int j = eDao.addDakaWithNameAndId(id, name);
+           return (i > 0)&&(j > 0) ? "success":"error";
+       }
     }
     @RequestMapping("/addEmployee") // 添加员工
     public String addEmployee(@RequestBody Employee employee){
@@ -44,7 +50,7 @@ public class EmployeeController {
         int i = eDao.deleteEmployee(id);
         return i>0?"success":"error";
     }
-    @RequestMapping("/getUpdate")// 或许需要修改信息的员工信息
+    @RequestMapping("/getUpdate")// 获取需要修改信息的员工信息
     public String getUpdateEmployee(int id){
         Employee employee = eDao.getUpdateEmployee(id);
         String string = JSON.toJSONString(employee);

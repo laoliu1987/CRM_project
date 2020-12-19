@@ -1,13 +1,13 @@
 package com.laoliuprojectnew.demo.bean;
 
-public class Goods {
+public class Operation {
     private int id;
     private String name;
     private double price;
     private int score;
-    private int left;
     private String beizhu;
-    public Goods() {
+
+    public Operation() {
     }
 
     public int getScore() {
@@ -16,14 +16,6 @@ public class Goods {
 
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public int getLeft() {
-        return left;
-    }
-
-    public void setLeft(int left) {
-        this.left = left;
     }
 
     public String getBeizhu() {

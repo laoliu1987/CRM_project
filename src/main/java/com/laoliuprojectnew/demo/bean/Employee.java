@@ -10,7 +10,16 @@ public class Employee {
     private String phonenumber;
     private String address;
     private boolean state;
-    private Date time;
+    private String position;
+    private String time;
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
 
     public int getId() {
         return id;
@@ -68,11 +77,11 @@ public class Employee {
         this.state = state;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
