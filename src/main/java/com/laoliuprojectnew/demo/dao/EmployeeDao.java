@@ -18,4 +18,10 @@ public interface EmployeeDao {
     public int deleteEmployee(Integer id);
     public Employee getUpdateEmployee(Integer id);
     public int editEmployee(Employee employee);
+    public List<Employee> getAllEmployeeNoDaka(@Param("pageStart") int PageStart,
+                                               @Param("pageSize") int pageSize);
+    public List<Employee> getAllEmployeeOkDaka(@Param("pageStart") int PageStart,
+                                               @Param("pageSize") int pageSize);
+    public int getAllEmployeeOkDakaNumber();
+    public int getAllEmployeeNoDakaNumber();
 }

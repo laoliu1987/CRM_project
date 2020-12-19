@@ -39,13 +39,13 @@ public class OperationController {
         int i = oDao.deleteOperation(id);
         return i>0?"success":"error";
     }
-    @RequestMapping("/getGoodsUpdate")// 获取需要修改信息的商品信息
+    @RequestMapping("/getOperationUpdate")// 获取需要修改信息的商品信息
     public String getUpdateOperation(int id){
         Operation operation = oDao.getUpdateOperation(id);
         String string = JSON.toJSONString(operation);
         return string;
     }
-    @RequestMapping("/editGoods") //修改商品信息
+    @RequestMapping("/editOperation") //修改商品信息
     public String editOperation(@RequestBody Operation operation){
         int i = oDao.editOperation(operation);
         return i>0?"success":"error";

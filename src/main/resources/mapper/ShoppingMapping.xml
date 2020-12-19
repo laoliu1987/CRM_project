@@ -27,7 +27,7 @@
 
     <update id="editShopping">
         UPDATE  shopping SET name=#{name},cname=#{cname},
-        cname=#{gname},time=#{time}
+        gname=#{gname},time=#{time}
         WHERE id = #{id}
     </update>
 </mapper>

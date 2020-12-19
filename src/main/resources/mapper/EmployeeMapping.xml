@@ -11,6 +11,24 @@
         LIMIT #{pageStart},#{pageSize}
     </select>
 
+    <select id="getAllEmployeeNoDaka" resultType="com.laoliuprojectnew.demo.bean.Employee">
+        SELECT * FROM `employee` WHERE `state`=0
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getEmployeeCountsNoDakaNumber" resultType="java.lang.Integer">
+        SELECT count(*) FROM `employee` WHERE `state`=0
+    </select>
+
+    <select id="getAllEmployeeOkDaka" resultType="com.laoliuprojectnew.demo.bean.Employee">
+        SELECT * FROM `employee` WHERE `state`=1
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getEmployeeCountsOkDakaNumber" resultType="java.lang.Integer">
+        SELECT count(*) FROM `employee` WHERE `state`=1
+    </select>
+
     <select id="getEmployeeCountsWithName" resultType="java.lang.Integer">
         SELECT count(*) FROM `employee`
         <if test="name!=null">

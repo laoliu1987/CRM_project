@@ -33,7 +33,7 @@ public class GoodsController {
         return i>0?"success":"error";
     }
     @RequestMapping("/deleteGoods")//根据主键删除商品 只需提供id
-    public String deleteCustomer(int id){
+    public String deleteGoods(int id){
         int i = gDao.deleteGoods(id);
         return i>0?"success":"error";
     }

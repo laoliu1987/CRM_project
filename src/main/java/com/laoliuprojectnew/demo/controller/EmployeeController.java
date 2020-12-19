@@ -40,6 +40,30 @@ public class EmployeeController {
            return (i > 0)&&(j > 0) ? "success":"error";
        }
     }
+    @RequestMapping("/EmployeeOkDaka") //员工已打卡列表
+    public String getEmployeeOkDaka(QueryInfo queryInfo){
+        int numbers = eDao.getAllEmployeeOkDakaNumber();
+        int pageStart = (queryInfo.getPageNum() - 1) * queryInfo.getPageSize();
+        List<Employee> employee = eDao.getAllEmployeeOkDaka(pageStart, queryInfo.getPageSize());
+        HashMap<String, Object> res = new HashMap<>();
+        res.put("number", numbers);
+        res.put("data", employee);
+        String res_string = JSON.toJSONString(res);
+        return res_string;
+    }
+
+    @RequestMapping("/EmployeeNoDaka") //员工未打卡列表
+    public String getEmployeeNoDaka(QueryInfo queryInfo){
+        int numbers = eDao.getAllEmployeeNoDakaNumber();
+        int pageStart = (queryInfo.getPageNum() - 1) * queryInfo.getPageSize();
+        List<Employee> employee = eDao.getAllEmployeeNoDaka(pageStart, queryInfo.getPageSize());
+        HashMap<String, Object> res = new HashMap<>();
+        res.put("number", numbers);
+        res.put("data", employee);
+        String res_string = JSON.toJSONString(res);
+        return res_string;
+    }
+
     @RequestMapping("/addEmployee") // 添加员工
     public String addEmployee(@RequestBody Employee employee){
         int i = eDao.addEmployee(employee);
