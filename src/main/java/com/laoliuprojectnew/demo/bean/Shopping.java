@@ -5,8 +5,26 @@ public class Shopping {
     private String cname;
     private String gname;
     private String time;
+    private String oname;
+    private double price;
 
     public Shopping() {
+    }
+
+    public String getOname() {
+        return oname;
+    }
+
+    public void setOname(String oname) {
+        this.oname = oname;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public int getId() {

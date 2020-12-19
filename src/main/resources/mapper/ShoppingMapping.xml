@@ -13,20 +13,29 @@
     </select>
     <insert id="addShopping">
         INSERT  INTO shopping
-        (name,cname,gname,time)
-        VALUE
-        (#{name},#{cname},#{gname},now())
+        <if test="gname!=''">
+            (cname,gname,price,time)
+            VALUE
+            (#{cname},#{gname},#{price},now())
+        </if>
+        <if test="oname!=''">
+            (cname,oname,price,time)
+            VALUE
+            (#{cname},#{oname},#{price},now())
+        </if>
     </insert>
+
+
     <delete id="deleteShopping">
         DELETE FROM shopping WHERE id=#{id}
     </delete>
 
     <select id="getUpdateShopping" resultType="com.laoliuprojectnew.demo.bean.Shopping">
-        SELECT * FROM shopping WHERE id =#{id}
+        SELECT * FROM shopping WHERE cname =#{cname}
     </select>
 
     <update id="editShopping">
-        UPDATE  shopping SET name=#{name},cname=#{cname},
+        UPDATE  shopping SET oname=#{oname},cname=#{cname},
         gname=#{gname},time=#{time}
         WHERE id = #{id}
     </update>

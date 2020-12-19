@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laoliuprojectnew.demo.dao.CalenderDao">
+    <select id="getAllCalender" resultType="com.laoliuprojectnew.demo.bean.Calender">
+        SELECT * FROM `calender`
+    </select>
+    <insert id="addCalender">
+        INSERT  INTO customer
+        (`date`,content)
+        VALUE
+        (#{date},#{content})
+    </insert>
+    <delete id="deleteCalender">
+        DELETE FROM calender WHERE date=#{date}
+    </delete>
+
+    <select id="getUpdateCalender" resultType="com.laoliuprojectnew.demo.bean.Calender">
+        SELECT * FROM calender WHERE date =#{date}
+    </select>
+
+    <update id="editCalender">
+        UPDATE  calender SET content=#{content}
+        WHERE date = #{date}
+    </update>
+</mapper>
